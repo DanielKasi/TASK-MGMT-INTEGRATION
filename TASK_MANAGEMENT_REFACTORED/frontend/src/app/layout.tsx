@@ -13,8 +13,6 @@ import { ThemeProvider } from "@/components/theme-provider";
 import { cn } from "@/lib/utils";
 import LogoutWarningPopup from "@/components/inactivity/logout-warning-popup";
 
-
-
 // const Outfit = Outfit({subsets: ["latin"], weight:['100', '200', '300', '400', '500', '600', '700', '800', '900']});
 const font = Outfit({ subsets: ["latin"] });
 
