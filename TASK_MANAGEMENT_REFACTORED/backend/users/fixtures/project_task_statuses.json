@@ -1,0 +1,34 @@
+{
+  "statuses": [
+    {
+      "name": "todo",
+      "description": "Tasks that are planned but not yet started",
+      "weight": 1,
+      "color_code": "#E0E0E0"
+    },
+    {
+      "name": "ongoing",
+      "description": "Tasks that are currently in progress",
+      "weight": 2,
+      "color_code": "#2196F3"
+    },
+    {
+      "name": "onhold",
+      "description": "Tasks that are temporarily paused or blocked",
+      "weight": 3,
+      "color_code": "#FF9800"
+    },
+    {
+      "name": "completed",
+      "description": "Tasks that have been successfully finished",
+      "weight": 4,
+      "color_code": "#4CAF50"
+    },
+    {
+      "name": "failed",
+      "description": "Tasks that could not be completed successfully",
+      "weight": 5,
+      "color_code": "#F44336"
+    }
+  ]
+}

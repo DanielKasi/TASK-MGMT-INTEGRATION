@@ -1,0 +1,478 @@
+{
+  "User Management": [
+    {
+      "code": "can_create_users",
+      "name": "Can Create Users",
+      "description": "Allows creating new user accounts"
+    },
+    {
+      "code": "can_view_users",
+      "name": "Can View Users",
+      "description": "Allows viewing user accounts and profiles"
+    },
+    {
+      "code": "can_edit_users",
+      "name": "Can Edit Users",
+      "description": "Allows editing user account information"
+    },
+    {
+      "code": "can_deactivate_users",
+      "name": "Can Deactivate Users",
+      "description": "Allows deactivating/suspending user accounts"
+    },
+    {
+      "code": "can_delete_users",
+      "name": "Can Delete Users",
+      "description": "Allows permanently deleting user accounts"
+    },
+    {
+      "code": "can_reset_user_passwords",
+      "name": "Can Reset User Passwords",
+      "description": "Allows resetting user passwords"
+    },
+    {
+      "code": "can_view_staff_roles",
+      "name": "Can View Staff Roles",
+      "description": "Allows viewing staff roles and permissions"
+    },
+    {
+      "code": "can_edit_staff_roles",
+      "name": "Can Edit Staff Roles",
+      "description": "Allows editing staff roles and permissions"
+    },
+    {
+      "code": "can_assign_user_roles",
+      "name": "Can Assign User Roles",
+      "description": "Allows assigning roles to users"
+    },
+      {
+      "code": "can_create_approver_groups",
+      "name": "Can Create Approver Groups",
+      "description": "Allows creating approver groups"
+    },
+      {
+      "code": "can_edit_approver_groups",
+      "name": "Can Edit Approver Groups",
+      "description": "Allows editing approver groups"
+    },
+       {
+      "code": "can_view_approver_groups",
+      "name": "Can View Approver Groups",
+      "description": "Allows viewing approver groups"
+    },
+      {
+      "code": "can_delete_approver_groups",
+      "name": "Can delete Approver Groups",
+      "description": "Allows deleting approver groups"
+    },
+    {
+      "code": "can_configure_approver_groups",
+      "name": "Can Configure Approver Groups",
+      "description": "Allows configuring approver groups"
+    },
+    {
+      "code": "can_create_staff_groups",
+      "name": "Can Create Staff Groups",
+      "description": "Allows creating staff groups"
+    },
+    {
+      "code": "can_edit_staff_groups",
+      "name": "Can Edit Staff Groups",
+      "description": "Allows editing staff groups"
+    },
+     {
+      "code": "can_view_staff_groups",
+      "name": "Can View Staff Groups",
+      "description": "Allows viewing staff groups"
+    },
+    {
+      "code": "can_delete_staff_groups",
+      "name": "Can delete Staff Groups",
+      "description": "Allows deleting staff groups"
+    }
+  ],
+
+
+
+
+
+  "Policy Management": [
+    {
+      "code": "can_create_policies",
+      "name": "Can Create Policies",
+      "description": "Allows creating new company policies"
+    },
+    {
+      "code": "can_edit_policies",
+      "name": "Can Edit Policies",
+      "description": "Allows editing existing policies"
+    },
+    {
+      "code": "can_approve_policies",
+      "name": "Can Approve Policies",
+      "description": "Allows approving policy changes"
+    },
+    {
+      "code": "can_publish_policies",
+      "name": "Can Publish Policies",
+      "description": "Allows publishing policies to employees"
+    },
+    {
+      "code": "can_archive_policies",
+      "name": "Can Archive Policies",
+      "description": "Allows archiving outdated policies"
+    },
+    {
+      "code": "can_track_policy_acknowledgments",
+      "name": "Can Track Policy Acknowledgments",
+      "description": "Allows tracking employee policy acknowledgments"
+    }
+  ],
+
+  "Leadership & Culture": [
+    {
+      "code": "can_manage_company_vision",
+      "name": "Can Manage Company Vision",
+      "description": "Allows managing company vision and mission"
+    },
+    {
+      "code": "can_manage_core_values",
+      "name": "Can Manage Core Values",
+      "description": "Allows managing company core values"
+    },
+    {
+      "code": "can_manage_leadership_programs",
+      "name": "Can Manage Leadership Programs",
+      "description": "Allows managing leadership development programs"
+    },
+    {
+      "code": "can_assess_leadership_gaps",
+      "name": "Can Assess Leadership Gaps",
+      "description": "Allows assessing leadership gaps and opportunities"
+    },
+    {
+      "code": "can_manage_cultural_activities",
+      "name": "Can Manage Cultural Activities",
+      "description": "Allows managing workplace cultural activities"
+    }
+  ],
+
+  "Reports & Analytics": [
+    {
+      "code": "can_view_task_dashboard",
+      "name": "Can View TASK Dashboard",
+      "description": "Allows viewing TASk analytics dashboard"
+    },
+    {
+      "code": "can_generate_task_reports",
+      "name": "Can Generate TASK Reports",
+      "description": "Allows generating comprehensive TASk reports"
+    },
+    {
+      "code": "can_view_quality_metrics",
+      "name": "Can View Quality Metrics",
+      "description": "Allows viewing ISO 9001 quality metrics"
+    },
+    {
+      "code": "can_export_task_data",
+      "name": "Can Export TASK Data",
+      "description": "Allows exporting TASk data for analysis"
+    },
+    {
+      "code": "can_view_compliance_reports",
+      "name": "Can View Compliance Reports",
+      "description": "Allows viewing compliance and audit reports"
+    },
+    {
+      "code": "can_view_employee_statistics",
+      "name": "Can View Employee Statistics",
+      "description": "Allows viewing employee statistics by department"
+    }
+  ],
+
+  "System Administration": [
+    {
+      "code": "can_view_admin_dashboard",
+      "name": "Can View Admin Dashboard",
+      "description": "Allows viewing system administration dashboard"
+    },
+    {
+      "code": "can_view_admin_page",
+      "name": "Can View Admin Page",
+      "description": "Allows viewing admin page"
+    },
+    {
+      "code": "can_view_settings",
+      "name": "Can View Settings",
+      "description": "Allows viewing system settings"
+    },
+    {
+      "code": "can_edit_settings",
+      "name": "Can Edit Settings",
+      "description": "Allows editing system settings"
+    },
+    {
+      "code": "can_view_modules",
+      "name": "Can View Modules",
+      "description": "Allows viewing system modules"
+    },
+    {
+      "code": "can_manage_modules",
+      "name": "Can Manage Modules",
+      "description": "Allows managing system modules"
+    },
+    {
+      "code": "can_change_theme_color",
+      "name": "Can Change Theme Color",
+      "description": "Allows changing the system theme color"
+    },
+    {
+      "code": "can_view_guide",
+      "name": "Can View Setup Guide",
+      "description": "Allows viewing the system setup guide"
+    },
+    {
+      "code": "can_manage_approval_workflows",
+      "name": "Can Manage Approval Workflows",
+      "description": "Allows managing approval workflows and steps"
+    },
+    {
+      "code": "can_backup_system",
+      "name": "Can Backup System",
+      "description": "Allows creating system backups"
+    },
+    {
+      "code": "can_restore_system",
+      "name": "Can Restore System",
+      "description": "Allows restoring system from backups"
+    }
+  ],
+
+  "Branch Management": [
+    {
+      "code": "can_view_branches",
+      "name": "Can View Branches",
+      "description": "Allows viewing branch information"
+    },
+    {
+      "code": "can_add_branch",
+      "name": "Can Add Branch",
+      "description": "Allows adding new branches"
+    },
+    {
+      "code": "can_edit_branch",
+      "name": "Can Edit Branch",
+      "description": "Allows editing branch details"
+    },
+    {
+      "code": "can_delete_branch",
+      "name": "Can Delete Branch",
+      "description": "Allows deleting branches"
+    },
+    {
+      "code": "can_manage_branch_employees",
+      "name": "Can Manage Branch Employees",
+      "description": "Allows managing employees within specific branches"
+    }
+  ],
+
+  "Department Management": [
+    {
+      "code": "can_view_departments",
+      "name": "Can View Departments",
+      "description": "Allows viewing department information"
+    },
+    {
+      "code": "can_create_departments",
+      "name": "Can Create Departments",
+      "description": "Allows creating new departments"
+    },
+    {
+      "code": "can_edit_departments",
+      "name": "Can Edit Departments",
+      "description": "Allows editing department details"
+    },
+    {
+      "code": "can_delete_departments",
+      "name": "Can Delete Departments",
+      "description": "Allows deleting departments"
+    },
+    {
+      "code": "can_manage_department_heads",
+      "name": "Can Manage Department Heads",
+      "description": "Allows managing department heads and hierarchy"
+    }
+  ],
+
+
+  "Projects Mgt": [
+    {
+      "code": "can_create_projects",
+      "name": "Can Create Projects",
+      "description": "Allows creating new projects under an institution"
+    },
+    {
+      "code": "can_view_projects",
+      "name": "Can View Projects",
+      "description": "Allows viewing project listings and details related to them"
+    },
+        {
+      "code": "can_view_all_projects",
+      "name": "Can View All Projects",
+      "description": "Allows viewing all project listings and details"
+    },
+    {
+      "code": "can_edit_projects",
+      "name": "Can Edit Projects",
+      "description": "Allows editing project details"
+    },
+    {
+      "code": "can_delete_projects",
+      "name": "Can Delete Projects",
+      "description": "Allows deleting project records"
+    },
+      {
+      "code": "can_create_project_statuses",
+      "name": "Can Create Projects Statuses",
+      "description": "Allows creating project statuses"
+    },
+      {
+      "code": "can_view_project_statuses",
+      "name": "Can View Projects Statuses",
+      "description": "Allows viewing project statuses"
+    },
+      {
+      "code": "can_edit_project_statuses",
+      "name": "Can Editing Projects Statuses",
+      "description": "Allows editing project statuses"
+    },
+      {
+      "code": "can_delete_project_statuses",
+      "name": "Can Delete Projects Statuses",
+      "description": "Allows deleting project statuses"
+    },
+    {
+      "code": "can_create_tasks",
+      "name": "Can Create Tasks",
+      "description": "Allows creating tasks under projects"
+    },
+    {
+      "code": "can_view_tasks",
+      "name": "Can View Tasks",
+      "description": "Allows viewing only task listings and details related to them"
+    },
+    {
+      "code": "can_view_all_tasks",
+      "name": "Can View All Tasks",
+      "description": "Allows viewing all task listings and details"
+    },
+    {
+      "code": "can_edit_tasks",
+      "name": "Can Edit Tasks",
+      "description": "Allows editing existing tasks"
+    },
+    {
+      "code": "can_delete_tasks",
+      "name": "Can Delete Tasks",
+      "description": "Allows deleting task records"
+    },
+    {
+      "code": "can_start_tasks",
+      "name": "Can Start Tasks",
+      "description": "Allows starting a task timesheet"
+    },
+    {
+      "code": "can_end_tasks",
+      "name": "Can End Tasks",
+      "description": "Allows ending a task timesheet"
+    },
+    {
+      "code": "can_update_task_timesheets",
+      "name": "Can Update Task Timesheets",
+      "description": "Allows updating time spent on tasks (leaders only)"
+    },
+    {
+      "code": "can_view_task_timesheets",
+      "name": "Can View Task Timesheets",
+      "description": "Allows viewing task timesheet entries"
+    },
+      {
+      "code": "can_create_task_priority",
+      "name": "Can create Task Priority",
+      "description": "Allows creating existing tasks"
+    },
+     {
+      "code": "can_edit_task_priority",
+      "name": "Can edit Task Priority",
+      "description": "Allows editing existing task priority"
+    },
+     {
+      "code": "can_view_task_priority",
+      "name": "Can view Task Priority",
+      "description": "Allows viewing existing tasks priority"
+    },
+     {
+      "code": "can_delete_task_priority",
+      "name": "Can delete Task Priority",
+      "description": "Allows deleting existing tasks"
+    }, 
+    {
+      "code": "can_create_project_task_priority",
+      "name": "Can Create Project Task Priority",
+      "description": "Allows creating project task priority"
+    }, 
+    {
+      "code": "can_edit_project_task_priority",
+      "name": "Can edit Project Task Priority",
+      "description": "Allows editing existing task priority"
+    },
+     {
+      "code": "can_view_project_task_priority",
+      "name": "Can view Project Task Priority",
+      "description": "Allows viewing existing tasks priority"
+    },
+     {
+      "code": "can_delete_project_task_priority",
+      "name": "Can delete Project Task Priority",
+      "description": "Allows deleting existing tasks"
+    }, 
+     {
+      "code": "can_create_task_statuses",
+      "name": "Can create Task Statuses",
+      "description": "Allows creating task statuses"
+    },
+    {
+      "code": "can_view_task_statuses",
+      "name": "Can view Task Statuses",
+      "description": "Allows viewing task statuses"
+    },
+      {
+      "code": "can_edit_task_statuses",
+      "name": "Can edit Task Statuses",
+      "description": "Allows editing task statuses"
+    },
+      {
+      "code": "can_delete_task_statuses",
+      "name": "Can delete Task Statuses",
+      "description": "Allows deleting task statuses"
+    },
+    {
+      "code": "can_edit_frozen_assignees",
+      "name": "can edit frozen assignees",
+      "description": "Allows editing frozen assignees"
+    },
+    {
+      "code": "can_extend_task_timeline",
+      "name": "can extend task_timeline",
+      "description": "Allows extending task timeline"
+    }
+  ],
+
+  "AI Assistant":[
+    {
+      "code": "can_view_ai_assistant",
+      "name": "CAN VIEW AI ASSISTANT",
+      "description": "Allows users to see the AI Assistant"
+    }
+  ]
+}

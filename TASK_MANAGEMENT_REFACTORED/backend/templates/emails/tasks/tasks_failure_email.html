@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Task Failed – Action Required</title>
+</head>
+<body style="margin: 0; padding: 0; font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, 'Helvetica Neue', Arial, sans-serif; background: linear-gradient(135deg, #e74c3c 0%, #c0392b 100%); color: #333333;">
+    <div style="max-width: 600px; margin: 40px auto; background-color: #ffffff; border-radius: 12px; overflow: hidden; box-shadow: 0 10px 40px rgba(0, 0, 0, 0.15);">
+        <!-- Header -->
+        <div style="background: linear-gradient(135deg, #e74c3c 0%, #c0392b 100%); padding: 40px 30px; text-align: center; color: #ffffff; position: relative;">
+            <div style="background-color: rgba(255, 255, 255, 0.1); width: 80px; height: 80px; border-radius: 50%; margin: 0 auto 20px; display: flex; align-items: center; justify-content: center; font-size: 40px;">⚠️</div>
+            <h1 style="margin: 0; font-size: 28px; font-weight: 600; letter-spacing: -0.5px;">Task Failed – Action Required</h1>
+        </div>
+        
+        <!-- Content -->
+        <div style="padding: 40px 30px;">
+            <h2 style="color: #2c3e50; font-size: 22px; margin-top: 0; font-weight: 600;">Hello, {{ salutation }} {{ fullname }}</h2>
+            <p style="line-height: 1.8; font-size: 16px; color: #555555;">We regret to inform you that your assigned task in {{ company_name }} has been marked as <strong>failed</strong>. Please review the details below and take corrective action as soon as possible.</p>
+            
+            <!-- Task Details Box -->
+            <div style="background: linear-gradient(135deg, #f8f9fa 0%, #e9ecef 100%); border: 2px solid #e0e0e0; border-radius: 8px; padding: 25px; margin: 25px 0; box-shadow: 0 2px 8px rgba(0, 0, 0, 0.05);">
+                {% if task_project_name%}
+                    <div style="margin-bottom: 15px; padding-bottom: 15px; border-bottom: 1px solid #dee2e6;">
+                        <p style="margin: 0; font-size: 13px; color: #6c757d; text-transform: uppercase; letter-spacing: 0.5px; font-weight: 600;">Project</p>
+                        <p style="margin: 5px 0 0 0; font-size: 16px; color: #2c3e50; font-weight: 600;">{{ task_project_name }}</p>
+                    </div>
+                {% endif %}
+                <div style="margin-bottom: 15px; padding-bottom: 15px; border-bottom: 1px solid #dee2e6;">
+                    <p style="margin: 0; font-size: 13px; color: #6c757d; text-transform: uppercase; letter-spacing: 0.5px; font-weight: 600;">Task</p>
+                    <p style="margin: 5px 0 0 0; font-size: 18px; color: #2c3e50; font-weight: 600;">{{ task.task_name }}</p>
+                </div>
+                <div style="margin-bottom: 15px; padding-bottom: 15px; border-bottom: 1px solid #dee2e6;">
+                    <p style="margin: 0; font-size: 13px; color: #6c757d; text-transform: uppercase; letter-spacing: 0.5px; font-weight: 600;">Role</p>
+                    <p style="margin: 5px 0 0 0; font-size: 16px; color: #2c3e50;">{{ role_label }}</p>
+                </div>
+                <div style="display: table; width: 100%; margin-bottom: 15px; padding-bottom: 15px; border-bottom: 1px solid #dee2e6;">
+                    <div style="display: table-cell; width: 50%; padding-right: 10px;">
+                        <p style="margin: 0; font-size: 13px; color: #6c757d; text-transform: uppercase; letter-spacing: 0.5px; font-weight: 600;">Start Date</p>
+                        <p style="margin: 5px 0 0 0; font-size: 16px; color: #2c3e50;">{{ task.start_date }}</p>
+                    </div>
+                    <div style="display: table-cell; width: 50%; padding-left: 10px;">
+                        <p style="margin: 0; font-size: 13px; color: #6c757d; text-transform: uppercase; letter-spacing: 0.5px; font-weight: 600;">Due Date</p>
+                        <p style="margin: 5px 0 0 0; font-size: 16px; color: #2c3e50;">{{ task.end_date }}</p>
+                    </div>
+                </div>
+                <div>
+                    <p style="margin: 0; font-size: 13px; color: #6c757d; text-transform: uppercase; letter-spacing: 0.5px; font-weight: 600;">Description</p>
+                    <p style="margin: 8px 0 0 0; font-size: 15px; line-height: 1.6; color: #495057;">{{ task.description }}</p>
+                </div>
+            </div>
+            
+            <!-- View Task Button -->
+            <div style="text-align: center; margin: 30px 0;">
+                <a href="{{ url }}" style="display: inline-block; padding: 14px 32px; background: linear-gradient(135deg, #e74c3c 0%, #c0392b 100%); color: #ffffff; text-decoration: none; border-radius: 6px; font-size: 16px; font-weight: 600; box-shadow: 0 4px 15px rgba(231, 76, 60, 0.4); transition: all 0.3s ease;">View Task & Resolve</a>
+            </div>
+            
+            <!-- Failure Notice -->
+            <div style="background: linear-gradient(135deg, #fff5f5 0%, #ffeaea 100%); border-left: 4px solid #e74c3c; border-radius: 6px; padding: 20px; margin: 25px 0; font-size: 14px; box-shadow: 0 2px 8px rgba(231, 76, 60, 0.1);">
+                <p style="margin: 0 0 12px 0; font-weight: 600; color: #2c3e50; font-size: 15px;"><span style="font-size: 18px;">❗</span> Immediate Action Needed:</p>
+                <ul style="margin: 0; padding-left: 20px; line-height: 1.8; color: #495057;">
+                    <li style="margin-bottom: 8px;">Review the reason for failure (check comments or feedback)</li>
+                    <li style="margin-bottom: 8px;">Correct any issues and resubmit if applicable</li>
+                    <li>Contact your project manager to discuss next steps</li>
+                </ul>
+            </div>
+            
+            <p style="line-height: 1.8; font-size: 16px; color: #555555; margin-top: 25px;">Please address this promptly to avoid delays in the project timeline. For assistance, contact your project manager or our support team at <a href="mailto:{{ support_email }}" style="color: #e74c3c; text-decoration: none; font-weight: 600;">{{ support_email }}</a>.</p>
+            
+            <p style="line-height: 1.8; font-size: 16px; color: #555555; margin-top: 25px;">We’re here to help you get back on track!</p>
+            <p style="line-height: 1.8; font-size: 16px; color: #555555;">Best regards,<br><strong>The {{ company_name }} Team</strong></p>
+        </div>
+        
+        <!-- Footer -->
+        <div style="background-color: #f8f9fa; padding: 25px 30px; text-align: center; font-size: 13px; color: #6c757d; border-top: 1px solid #e9ecef;">
+            <p style="margin: 5px 0; line-height: 1.6;">This is an automated message. Please do not reply to this email.</p>
+            <p style="margin: 5px 0; line-height: 1.6;">For support, contact <a href="mailto:{{ support_email }}" style="color: #e74c3c; text-decoration: none; font-weight: 600;">{{ support_email }}</a>.</p>
+        </div>
+    </div>
+</body>
+</html>

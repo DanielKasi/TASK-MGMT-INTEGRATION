@@ -1,0 +1,42 @@
+{
+  "$schema": "http://json-schema.org/draft-07/schema#",
+  "type": "object",
+  "required": ["name", "version", "platformVersion", "mountPath", "routes"],
+  "properties": {
+    "name": {
+      "type": "string",
+      "pattern": "^[a-z][a-z0-9-]*$",
+      "description": "Module name (kebab-case)"
+    },
+    "version": {
+      "type": "string",
+      "pattern": "^\\d+\\.\\d+\\.\\d+$",
+      "description": "Semantic version"
+    },
+    "platformVersion": {
+      "type": "string",
+      "description": "Semver range for compatible platform versions"
+    },
+    "mountPath": {
+      "type": "string",
+      "pattern": "^/[a-z][a-z0-9-]*$",
+      "description": "URL prefix where module routes are accessible"
+    },
+    "routes": {
+      "type": "array",
+      "items": {
+        "type": "string",
+        "pattern": "^/"
+      },
+      "description": "Array of route paths"
+    },
+    "peerDeps": {
+      "type": "object",
+      "additionalProperties": {
+        "type": "string"
+      },
+      "description": "Peer dependencies that must match between module and host"
+    }
+  },
+  "additionalProperties": false
+}

@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Task Extension Denied</title>
+</head>
+<body style="margin: 0; padding: 0; font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, 'Helvetica Neue', Arial, sans-serif; background: linear-gradient(135deg, #667eea 0%, #764ba2 100%); color: #333333;">
+    <div style="max-width: 600px; margin: 40px auto; background-color: #ffffff; border-radius: 12px; overflow: hidden; box-shadow: 0 10px 40px rgba(0, 0, 0, 0.15);">
+        <!-- Header -->
+        <div style="background: linear-gradient(135deg, #dc3545 0%, #e64980 100%); padding: 40px 30px; text-align: center; color: #ffffff; position: relative;">
+            <div style="background-color: rgba(255, 255, 255, 0.1); width: 80px; height: 80px; border-radius: 50%; margin: 0 auto 20px; display: flex; align-items: center; justify-content: center; font-size: 40px;">⚠️</div>
+            <h1 style="margin: 0; font-size: 28px; font-weight: 600; letter-spacing: -0.5px;">Extension Not Approved</h1>
+        </div>
+        
+        <!-- Content -->
+        <div style="padding: 40px 30px;">
+            <h2 style="color: #2c3e50; font-size: 22px; margin-top: 0; font-weight: 600;">Hello, {{ salutation }} {{ fullname }}</h2>
+              <p style="line-height: 1.8; font-size: 16px; color: #555555;">We’ve reviewed your request to extend the timeline for the task <strong>{{ task.task_name }}</strong>, and unfortunately, it has been <strong>denied</strong> at this time.</p>
+            
+            <!-- Task Details Box -->
+            <div style="background: linear-gradient(135deg, #f8f9fa 0%, #e9ecef 100%); border: 2px solid #e0e0e0; border-radius: 8px; padding: 25px; margin: 25px 0; box-shadow: 0 2px 8px rgba(0, 0, 0, 0.05);">
+                {% if task_project_name %}
+                    <div style="margin-bottom: 15px; padding-bottom: 15px; border-bottom: 1px solid #dee2e6;">
+                        <p style="margin: 0; font-size: 13px; color: #6c757d; text-transform: uppercase; letter-spacing: 0.5px; font-weight: 600;">Project</p>
+                        <p style="margin: 5px 0 0 0; font-size: 16px; color: #2c3e50; font-weight: 600;">{{ task_project_name }}</p>
+                    </div>
+                {% endif %}
+                <div style="margin-bottom: 15px; padding-bottom: 15px; border-bottom: 1px solid #dee2e6;">
+                    <p style="margin: 0; font-size: 13px; color: #6c757d; text-transform: uppercase; letter-spacing: 0.5px; font-weight: 600;">Task</p>
+                    <p style="margin: 5px 0 0 0; font-size: 18px; color: #2c3e50; font-weight: 600;">{{ task.task_name }}</p>
+                </div>
+                <div style="display: table; width: 100%; margin-bottom: 15px; padding-bottom: 15px; border-bottom: 1px solid #dee2e6;">
+                    <div style="display: table-cell; width: 50%; padding-right: 10px;">
+                        <p style="margin: 0; font-size: 13px; color: #6c757d; text-transform: uppercase; letter-spacing: 0.5px; font-weight: 600;">Current Due Date</p>
+                        <p style="margin: 5px 0 0 0; font-size: 16px; color: #dc3545; font-weight: 600;">{{ task.end_date|date:"M d, Y" }}</p>
+                    </div>
+                    <div style="display: table-cell; width: 50%; padding-left: 10px;">
+                        <p style="margin: 0; font-size: 13px; color: #6c757d; text-transform: uppercase; letter-spacing: 0.5px; font-weight: 600;">Status</p>
+                        <p style="margin: 5px 0 0 0; font-size: 16px; color: #2c3e50;">Active – On Track</p>
+                    </div>
+                </div>
+                <div>
+                    <p style="margin: 0; font-size: 13px; color: #6c757d; text-transform: uppercase; letter-spacing: 0.5px; font-weight: 600;">Rejection Reason</p>
+                    <p style="margin: 8px 0 0 0; font-size: 15px; line-height: 1.6; color: #495057;">{{ task.extension_rejection_reason|default:"The current timeline aligns with project milestones and cannot be adjusted." }}</p>
+                </div>
+            </div>
+            
+            <!-- View Task Button -->
+            <div style="text-align: center; margin: 30px 0;">
+                <a href="{{ url }}" style="display: inline-block; padding: 14px 32px; background: linear-gradient(135deg, #dc3545 0%, #e64980 100%); color: #ffffff; text-decoration: none; border-radius: 6px; font-size: 16px; font-weight: 600; box-shadow: 0 4px 15px rgba(220, 53, 69, 0.4); transition: all 0.3s ease;">View Task Details</a>
+            </div>
+            
+            <!-- Important Notice -->
+            <div style="background: linear-gradient(135deg, #fff4e5 0%, #ffe8cc 100%); border-left: 4px solid #e67e22; border-radius: 6px; padding: 20px; margin: 25px 0; font-size: 14px; box-shadow: 0 2px 8px rgba(230, 126, 34, 0.1);">
+                <p style="margin: 0 0 12px 0; font-weight: 600; color: #2c3e50; font-size: 15px;"><span style="font-size: 18px;">❗</span> Action Required:</p>
+                <ul style="margin: 0; padding-left: 20px; line-height: 1.8; color: #495057;">
+                    <li style="margin-bottom: 8px;">Proceed with completing the task by the original deadline</li>
+                    <li style="margin-bottom: 8px;">If you're facing blockers, escalate immediately to your manager</li>
+                    <li>You may re-submit a new extension request with stronger justification if circumstances change</li>
+                </ul>
+            </div>
+            
+            <!-- Next Steps -->
+            <h3 style="color: #2c3e50; font-size: 20px; font-weight: 600; margin-top: 30px; margin-bottom: 15px;">Next Steps:</h3>
+            <ol style="line-height: 1.8; font-size: 16px; padding-left: 20px; color: #495057;">
+                <li style="margin-bottom: 10px;">Confirm your ability to meet the current deadline</li>
+                <li style="margin-bottom: 10px;">Communicate any critical risks to your task leader</li>
+                <li style="margin-bottom: 10px;">Focus on delivering quality work on time</li>
+                <li>Document lessons learned for future planning</li>
+            </ol>
+            
+            <p style="line-height: 1.8; font-size: 16px; color: #555555; margin-top: 25px;">We appreciate your understanding and commitment to project success.</p>
+            <p style="line-height: 1.8; font-size: 16px; color: #555555;">Best regards,<br><strong>The {{ company_name }} Team</strong></p>
+        </div>
+        
+        <!-- Footer -->
+        <div style="background-color: #f8f9fa; padding: 25px 30px; text-align: center; font-size: 13px; color: #6c757d; border-top: 1px solid #e9ecef;">
+            <p style="margin: 5px 0; line-height: 1.6;">This is an automated message. Please do not reply to this email.</p>
+            <p style="margin: 5px 0; line-height: 1.6;">For support, contact <a href="mailto:{{ support_email }}" style="color: #667eea; text-decoration: none; font-weight: 600;">{{ support_email }}</a>.</p>
+        </div>
+    </div>
+</body>
+</html>
