@@ -29,6 +29,14 @@ export {
   selectSelectedInstitution as selectSelectedInstitutionContextAware,
   selectUserLoading as selectUserLoadingContextAware,
   selectAttachedInstitutions as selectAttachedInstitutionsContextAware,
+  selectAuthError as selectAuthErrorContextAware,
+  selectRefreshToken as selectRefreshTokenContextAware,
+  selectSelectedBranch as selectSelectedBranchContextAware,
+  selectSelectedTill as selectSelectedTillContextAware,
+  selectTemporaryPermissions as selectTemporaryPermissionsContextAware,
+  selectInactivityTimeout as selectInactivityTimeoutContextAware,
+  selectLogoutWarningVisible as selectLogoutWarningVisibleContextAware,
+  selectRefreshInProgress as selectRefreshInProgressContextAware,
 } from '@/store/auth/selectors-context-aware';
 
 // Auth utilities

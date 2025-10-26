@@ -91,7 +91,7 @@ export const configureAppStore = () => {
 
 	// store.subscribe(()=>{
 	//   const state = store.getState();
-	// console.log("\n\n Current auth : ", state.notifications.notifications)
+	// console.log("\n\n Current miscellaneous : ", state.miscellaneous.sideBarOpened)
 	// })
 
 	return store;

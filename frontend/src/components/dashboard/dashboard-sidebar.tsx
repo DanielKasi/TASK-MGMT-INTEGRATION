@@ -64,12 +64,10 @@ export default function DashboardSideBar() {
     }
   }, [mobileMenuOpen, filteredNavItems]);
 
-  useEffect(() => {
-    setMobileMenuOpen(isSideBarOpen);
-  }, [isSideBarOpen]);
 
   useEffect(() => {
-    setMobileMenuOpen(isSideBarOpen);
+    console.log("\n\n isSideBarOpen", isSideBarOpen);
+    setMobileMenuOpen(isSideBarOpen ?? false);
   }, [isSideBarOpen]);
 
   useEffect(() => {

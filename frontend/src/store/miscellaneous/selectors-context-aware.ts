@@ -1,5 +1,5 @@
 import { createSelector } from "@reduxjs/toolkit";
-import { createContextAwareSelector } from "@/platform-integration/store-adapter";
+import { createContextAwareSelector } from "@/platform-integration/context-aware-selectors";
 import { MiscState } from "./reducer";
 
 // Create context-aware slice selector
