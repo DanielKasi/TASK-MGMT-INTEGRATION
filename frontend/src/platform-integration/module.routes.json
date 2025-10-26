@@ -56,11 +56,11 @@
     "/(main_app)/(dashboard)/admin/settings/approvals/[id]/edit",
     "/(main_app)/(dashboard)/admin/settings/approvals/approver-groups"
   ],
-  "mountPath": "/task-management",
+  "mountPath": "/apps/task-management",
   "metadata": {
     "description": "Auto-generated module routes",
     "version": "1.0.0",
-    "lastUpdated": "2025-10-23T19:44:31.069Z",
+    "lastUpdated": "2025-10-26T11:50:49.559Z",
     "generatedBy": "generate-module-routes.mjs"
   }
 }

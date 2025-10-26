@@ -9,7 +9,7 @@ export const moduleDescriptor: ModuleDescriptor = {
   name: 'task-management',
   version: '1.0.0',
   platformVersion: '>=1.0.0 <2.0.0',
-  routeBasePath: '/tasks',
+  routeBasePath: '/apps/task-management',
   routes: [
     '/dashboard',
     '/projects',

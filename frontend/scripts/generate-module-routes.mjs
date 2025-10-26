@@ -35,20 +35,26 @@ function validateMountPath(mountPath) {
   
   // Check for spaces
   if (cleanPath.includes(' ')) {
-    throw new Error('Mount path cannot contain spaces');
+    throw new Error('Module name cannot contain spaces');
   }
   
   // Check for invalid characters (only allow lowercase letters, numbers, and hyphens)
   if (!/^[a-z0-9-]+$/.test(cleanPath)) {
-    throw new Error('Mount path can only contain lowercase letters, numbers, and hyphens');
+    throw new Error('Module name can only contain lowercase letters, numbers, and hyphens');
+  }
+  
+  // Ensure module name is not empty
+  if (!cleanPath || cleanPath.length === 0) {
+    throw new Error('Module name cannot be empty');
   }
   
   // Ensure it starts with a letter
   if (!/^[a-z]/.test(cleanPath)) {
-    throw new Error('Mount path must start with a letter');
+    throw new Error('Module name must start with a letter');
   }
   
-  return `/${cleanPath}`;
+  // Auto-prepend 'apps/' to create the full mount path
+  return `/apps/${cleanPath}`;
 }
 
 // Helper function to convert file path to route
@@ -115,7 +121,7 @@ async function generateModuleRoutes() {
     let isValidPath = false;
     
     while (!isValidPath) {
-      const userInput = await promptUser('Enter the mount path for this module (e.g., "tasks", "accounting"): ');
+      const userInput = await promptUser('Enter the module name (e.g., "tasks", "accounting"): ');
       
       try {
         mountPath = validateMountPath(userInput.trim());
@@ -192,6 +198,22 @@ async function generateModuleRoutes() {
       console.log(`✅ Updated module.json with new routes`);
     } catch (err) {
       console.log(`ℹ️  module.json not found or could not be updated: ${err.message}`);
+    }
+    
+    // Update module-descriptor.ts
+    const moduleDescriptorPath = path.join(rootDir, 'src', 'platform-integration', 'module-descriptor.ts');
+    try {
+      let descriptorContent = await fs.readFile(moduleDescriptorPath, 'utf-8');
+      
+      // Update routeBasePath to match mountPath
+      const routeBasePathRegex = /routeBasePath:\s*['"]([^'"]+)['"]/;
+      if (routeBasePathRegex.test(descriptorContent)) {
+        descriptorContent = descriptorContent.replace(routeBasePathRegex, `routeBasePath: '${mountPath}'`);
+        await fs.writeFile(moduleDescriptorPath, descriptorContent);
+        console.log(`✅ Updated module-descriptor.ts with new routeBasePath`);
+      }
+    } catch (err) {
+      console.log(`ℹ️  module-descriptor.ts not found or could not be updated: ${err.message}`);
     }
     
     console.log('\n🎉 Module routes generated successfully!');
