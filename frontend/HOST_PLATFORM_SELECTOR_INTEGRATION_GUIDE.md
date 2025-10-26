@@ -20,7 +20,8 @@
 8. [Implementation Steps](#implementation-steps)
 9. [Testing & Validation](#testing--validation)
 10. [Troubleshooting](#troubleshooting)
-11. [Best Practices](#best-practices)
+11. [Module Descriptor Handling](#module-descriptor-handling)
+12. [Best Practices](#best-practices)
 
 ---
 
@@ -634,6 +635,168 @@ describe('Module Integration', () => {
 2. Verify selector return types
 3. Check import paths in generated selectors
 4. Ensure all dependencies are properly imported
+
+---
+
+## Module Descriptor Handling
+
+### The Challenge
+
+Module descriptors export reducers using absolute imports that reference the module's own files:
+
+```typescript
+// In module's module-descriptor.ts
+import { authReducer } from '@/store/auth/reducer';
+import { miscReducer } from '@/store/miscellaneous/reducer';
+
+export const moduleDescriptor: ModuleDescriptor = {
+  slices: {
+    'taskManagementAuth': authReducer,  // These are the module's reducers
+    'taskManagementMisc': miscReducer,  // Not the host's!
+  },
+};
+```
+
+**Issue**: When synced to the host platform, these imports need to reference the module's reducers, not the host's.
+
+### Solution: Copy Module's Store Structure
+
+The host platform must copy the module's entire `src/store/` directory during sync, preserving the module's reducer structure:
+
+```
+Module Repository:
+└── src/
+    ├── app/              → Host: src/app/apps/task-management/
+    └── store/            → Host: src/app/apps/task-management/src/store/
+        ├── auth/
+        ├── miscellaneous/
+        └── ...
+```
+
+### Implementation
+
+#### Step 1: Enhanced Sync Process
+
+```javascript
+// In sync-module.mjs
+async function syncModule({ repo, tag, name }) {
+  const tempDir = `/tmp/module-sync-${name}-${Date.now()}`;
+  const rootDir = path.join(__dirname, '..');
+  
+  // Step 1: Clone module
+  execSync(`git clone --depth 1 --branch ${tag} ${repo} ${tempDir}`);
+  
+  // Step 2: Copy module app files
+  const moduleAppDir = path.join(rootDir, 'src', 'app', 'apps', name);
+  await copyDir(
+    path.join(tempDir, 'src', 'app'),
+    moduleAppDir
+  );
+  
+  // Step 3: Copy module store files (IMPORTANT!)
+  await fs.mkdir(path.join(moduleAppDir, 'src', 'store'), { recursive: true });
+  await copyDir(
+    path.join(tempDir, 'src', 'store'),
+    path.join(moduleAppDir, 'src', 'store')
+  );
+  
+  // Step 4: Copy module descriptor
+  await fs.copyFile(
+    path.join(tempDir, 'src', 'platform-integration', 'module-descriptor.ts'),
+    path.join(rootDir, 'src', 'lib', 'modules', `${name}.ts`)
+  );
+  
+  // Step 5: Generate selectors (as per existing guide)
+  await integrateModuleSelectors(name, moduleDescriptor, moduleAppDir);
+  
+  // Step 6: Generate registry (includes module reducers)
+  await generateRegistry(rootDir);
+  
+  // Step 7: Cleanup
+  await fs.rm(tempDir, { recursive: true, force: true });
+}
+```
+
+#### Step 2: Updated Registry Generation
+
+```typescript
+// host-platform/src/lib/redux/registry.ts (AUTO-GENERATED)
+
+import { combineReducers } from '@reduxjs/toolkit';
+import { all, fork } from 'redux-saga/effects';
+
+// Import module descriptors
+import { moduleDescriptor as taskManagement } from '@/lib/modules/task-management';
+
+// IMPORT MODULE REDUCERS FROM SYNCED FILES
+// These import from the module's synced store directory
+import { authReducer as taskManagementAuthReducer } from '@/app/apps/task-management/src/store/auth/reducer';
+import { miscReducer as taskManagementMiscReducer } from '@/app/apps/task-management/src/store/miscellaneous/reducer';
+
+// Host slices
+import { authReducer } from '@/store/auth/reducer';
+import { miscReducer } from '@/store/miscellaneous/reducer';
+
+// Root reducer - combine all slices
+export const rootReducer = combineReducers({
+  // Host slices
+  auth: authReducer,
+  miscellaneous: miscReducer,
+  
+  // Module slices with namespaced keys
+  taskManagementAuth: taskManagementAuthReducer,
+  taskManagementMisc: taskManagementMiscReducer,
+  
+  // Spread any additional slices from the descriptor
+  ...taskManagement.slices,
+});
+
+// Host sagas
+function* hostSagas() {
+  yield all([
+    fork(authSaga),
+    fork(notificationsSaga),
+  ]);
+}
+
+// Module sagas
+function* moduleSagas() {
+  yield all([
+    ...(taskManagement.sagas ?? []).map(saga => fork(saga)),
+  ]);
+}
+
+// Root saga
+export function* rootSaga() {
+  yield all([
+    fork(hostSagas),
+    fork(moduleSagas),
+  ]);
+}
+
+export type RootState = ReturnType<typeof rootReducer>;
+```
+
+### Key Points
+
+✅ **Module uses absolute imports** - `@/store/auth/reducer` is correct in the module descriptor  
+✅ **Host copies entire module** - Including `src/store/` directory  
+✅ **No code changes needed** - Module descriptor works as-is  
+✅ **Preserves module structure** - Reducers stay with the module  
+
+### Why This Works
+
+1. **In standalone mode**: Module has its own `@/store/auth/reducer` that resolves correctly
+2. **In integrated mode**: Host copies module files including `src/store/`, and the imports resolve to the module's reducers
+3. **No duplication**: Module's reducers are used, not the host's
+4. **Actions work correctly**: Each reducer handles its own actions by type
+
+### Benefits
+
+✅ **Simple for module developers** - Use standard absolute imports  
+✅ **Works automatically** - Host handles everything during sync  
+✅ **No duplicate code** - Module reducers stay with module  
+✅ **Type-safe** - Proper TypeScript resolution  
 
 ---
 
