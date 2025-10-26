@@ -1,6 +1,7 @@
 import { createSelector } from "reselect";
 import { createContextAwareSelector } from "@/platform-integration/context-aware-selectors";
 
+
 // Create context-aware slice selector
 const authSlice = createContextAwareSelector('auth', (slice) => slice);
 
