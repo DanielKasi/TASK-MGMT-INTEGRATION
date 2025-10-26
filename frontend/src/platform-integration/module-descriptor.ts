@@ -5,6 +5,7 @@ import { redirectsReducer } from '@/store/redirects/reducer';
 import { notificationsReducer } from '@/store/notifications/reducer';
 import { authSaga } from '@/store/auth/sagas';
 
+
 export const moduleDescriptor: ModuleDescriptor = {
   name: 'task-management',
   version: '1.0.0',
